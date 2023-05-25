@@ -47,6 +47,17 @@ class Order:
             print(order)
 
 
+    def get_open_orders(self):
+
+        self.orders = self.client.futures_get_open_orders()
+        self.view_orders()
+
+    def get_all_orders(self):
+
+        self.orders = self.client.futures_get_all_orders()
+        self.view_orders()
+
+
 data = {
    "symbol": "LTCUSDT",
    "type": "LIMIT",
@@ -65,3 +76,4 @@ api_secret = "ea4d56740931e539f8556baf829f9253a9fc740008f0185779b639077dba4706"
 tmp = Order(api_key,api_secret)
 
 tmp.create_orders(data)
+tmp.get_open_orders()
